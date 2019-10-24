@@ -7,5 +7,7 @@ __pycache__/
 */data.sql*
 */data-dev.sql*
 
-media/
+img/
 *_env/
+
+flask_session/
