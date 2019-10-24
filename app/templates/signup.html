@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Login Page {% endblock %}
+
+{% block page_content %}
+	<div class="row">
+	    <div class="col-lg-3 col-lg-offset-3">
+		    <h1>Sign Up</h1>
+			<a class="pull-right" href="{{url_for('main.login')}}">Login Free!</a>
+			{{ wtf.quick_form(form) }}
+		</div>
+	</div>
+{% endblock %}
+

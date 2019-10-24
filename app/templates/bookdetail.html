@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block page_content %}
+<div class="row">
+		
+    <div class="col-lg-8 col-lg-offset-2 col-sm-8 mx-auto mt-4">	
+    <div class="row">
+	<div class="col-lg-6">
+	{% if book %}
+		<h1>Book Details</h1>
+        <p class="lead">Title:{{book.title}}</p>
+        <p>Author:{{book.author}}</p>
+        <p>ISBN No:{{book.isbn}}</p>
+        <p>Release Year:{{book.year}}</p>
+	{% else %}
+	    <h1>Sorry, the book you search not found!</h1>
+	{% endif %}
+	</div>
+	<div class="col-lg-6">
+	{% if goodreads_reviews %}
+	<br/><br/><br/>
+	<img src="{{ url_for('static', filename='img/goodreads.jpg') }}" class='img-responsive' width='50%' alt="" />    
+	 <p>
+          
+            Average Rating:{{ goodreads_reviews.work_ratings_count }} <br>
+            Number of Ratings:{{ goodreads_reviews.average_rating }}
+     </p>
+
+    {% endif %}
+	</div>
+    </div>
+    </div>
+</div>	
+
+<div class="row">
+   <div class="col-lg-3  col-lg-offset-4 mx-auto mt-4">
+        {{wtf.quick_form(form) }}
+   </div>
+</div>
+
+{% if user_review_data %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+    	<br>
+    	<br>
+    	<br>
+    	
+		{% for i in user_review_data %}
+		
+		{{i['username']}} said : {{ i['comment'] }}
+		<br>
+		rating : {{i['rating']}}
+		<br>
+		<br>
+			
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+
+
+
+{% endblock %}

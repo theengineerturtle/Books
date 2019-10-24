@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Search&Review{% endblock %}
+{% block page_content %}
+    
+   	<!-- Search form -->
+    {{ wtf.quick_form(form) }}
+	
+    
+    <div class="table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Isbn</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Year</th>
+            </tr>
+          </thead>
+          <tbody> 
+          {% for book in books.items %}
+              <tr>
+                  <th scope="row"></a></th>
+                  <td><a href="{{ url_for('main.bookdetail', bookid=book.id) }}">{{book.isbn}}</a></td>
+                  <td><a href="{{ url_for('main.bookdetail', bookid=book.id) }}">{{book.title}}</a></td>
+                  <td><a href="{{ url_for('main.bookdetail', bookid=book.id) }}">{{book.author}}</a></td>
+                  <td><a href="{{ url_for('main.bookdetail', bookid=book.id) }}">{{book.year}}</a></td>
+				</tr>
+	      {% endfor %}		
+          </tbody>
+        </table>
+		
+        <div class="col-lg-offset-3">	
+		{% for page_num in books.iter_pages() %}
+		    {% if page_num %}
+		    <a class="btn btn-outline btn-primary" href="{{ url_for('main.search', page=page_num) }}">{{page_num}}</a>
+		    {% endif %}
+		{% endfor %}
+        </div>
+
+    </div>
+ 
+{% endblock %}

@@ -1,0 +1,11 @@
+# Cache:
+*/*/__pycache__/
+__pycache__/
+*.pyc
+
+# DB:
+*/data.sql*
+*/data-dev.sql*
+
+media/
+*_env/

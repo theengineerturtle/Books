@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Api Docs Page{% endblock %}
+{% block page_content %}
+		<h1 class="center mb-4">API Documentation</h1>
+
+		<h4>1-GET books's information by isbn number</h4>
+		<p>URL: localhost:5000/api/<code>&lt;isbn&gt;</code></p>
+		<p>HTTP Method: GET</p>
+		<p>JSON response: book's title, author, publication date, ISBN number, 
+		review count and average score</p>
+{% endblock %}

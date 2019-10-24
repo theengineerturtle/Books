@@ -1,0 +1,36 @@
+<!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand " href="{{ url_for('main.search') }}">Book Search&Review</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('main.index') }}">Home</a></li>
+			  <li><a href="{{ url_for('main.apidocs') }}">API Documents</a></li>             
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+			  {% if current_user.is_authenticated %}
+			  <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+			  <li><a href="{{ url_for('main.index') }}">Welcome, {{current_user.username}}</a></li>
+              {% else %}
+			  <li><a href="{{url_for('main.login')}}">Login</a></li>
+              {% endif %}
+			</ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+	  <!--Flash message-->
+      {% if get_flashed_messages() %} 
+           <div class="alert alert-info text-center" role="alert">
+		       {{ get_flashed_messages() | join(" ") }}
+		   </div>
+	  {% endif %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+{% block page_content %}
+    <h1>Search&Review Books that you are wonder!</h1>
+    
+	<!-- Dont show is use is logged in -->
+	{% if not current_user.is_authenticated %}
+        <h3 class="mt-4 mx-auto">Please Login or Sign Up for free account!</h3>
+	{% endif %}
+
+	<h1 class="mt-4 mx-auto">And Use Our Free API </h1>
+{% endblock %}

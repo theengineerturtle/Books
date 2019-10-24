@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} Error 404!{% endblock %}
+
+{% block page_content %}
+    {% if message %}
+        <h1>{{message}}</h1>
+	{% endif %}
+{% endblock %}
