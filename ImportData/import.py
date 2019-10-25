@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 engine = create_engine('sqlite:///' + os.path.join(
-        os.path.dirname(__file__), '../data-dev.sqlite3'))
+        os.path.dirname(__file__), '../data.sqlite3'))
 
 db = scoped_session(sessionmaker(bind=engine))
 
